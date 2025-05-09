@@ -16,6 +16,8 @@ import PublicPortfolio from './pages/PublicPortfolio';
 import AdminDashboard from './pages/admin/Dashboard';
 import AdminRoute from './components/AdminRoute';
 import Landing from './pages/Landing';
+import ForgotPassword from './pages/auth/ForgotPassword';
+import ResetPassword from './pages/auth/ResetPassword';
 
 const queryClient = new QueryClient();
 
@@ -48,6 +50,10 @@ function App() {
                 </Route>
                 
                 <Route path="*" element={<Navigate to="/" />} />
+
+                {/* Auth routes */}
+                <Route path="/forgot-password" element={<ForgotPassword />} />
+                <Route path="/reset-password/:token" element={<ResetPassword />} />
               </Routes>
             </div>
           </Router>

@@ -1,4 +1,4 @@
-const API_BASE_URL = `https://portfoliobuilder-mern.onrender.com/api`;
+const API_BASE_URL = `http://localhost:5000/api`;
 
 async function request(endpoint, options = {}) {
   const token = localStorage.getItem('token');
@@ -36,6 +36,14 @@ export const api = {
       body: JSON.stringify(userData),
     }),
     getProfile: () => request('/users/profile'),
+    forgotPassword: (email) => request('/users/forgot-password', {
+      method: 'POST',
+      body: JSON.stringify({ email }),
+    }),
+    resetPassword: (token, password) => request('/users/reset-password', {
+      method: 'POST',
+      body: JSON.stringify({ token, password }),
+    }),
   },
   portfolios: {
     create: (data) => request('/portfolios', {
